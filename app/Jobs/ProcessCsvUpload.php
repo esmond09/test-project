@@ -31,10 +31,11 @@ class ProcessCsvUpload implements ShouldQueue
             // Update status to processing
             $this->fileUpload->update(['status' => 'processing']);
 
-            $filePath = storage_path('app/' . $this->fileUpload->filename);
+            // Use Storage facade to get the correct path
+            $filePath = Storage::path($this->fileUpload->filename);
 
-            if (!file_exists($filePath)) {
-                throw new Exception('File not found: ' . $filePath);
+            if (!Storage::exists($this->fileUpload->filename)) {
+                throw new Exception('File not found: ' . $this->fileUpload->filename);
             }
 
             // Open and read CSV
