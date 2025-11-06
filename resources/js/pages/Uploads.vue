@@ -256,7 +256,7 @@ onUnmounted(() => {
                             @change="handleFileUpload"
                         />
                         <div>
-                            <span class="text-gray-700">
+                            <span>
                                 {{ isDragging ? 'Drop files here...' : 'Select file(s) or drag and drop' }}
                             </span>
                             <p v-if="uploadQueue > 0" class="text-sm text-gray-500 mt-1">
